@@ -1,0 +1,25 @@
+FROM node:18-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY frontend/package*.json ./
+
+# Install dependencies
+RUN npm ci
+
+# Copy project files
+COPY frontend/ .
+
+# Create .env file
+RUN echo "NEXT_PUBLIC_API_URL=http://localhost:8000/api" > .env.local
+
+# Build the application (for production)
+# RUN npm run build
+
+# Expose port
+EXPOSE 3000
+
+# Start the development server
+CMD ["npm", "run", "dev"]
