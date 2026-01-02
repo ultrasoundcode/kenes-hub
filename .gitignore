@@ -2,3 +2,4 @@
 node_modules/
 *.log
 *.nodenode_modules/ # если строки не было
+node_modules/
